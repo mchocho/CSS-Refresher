@@ -1,20 +1,25 @@
 function script() {
-	function reloadCSS() {
+	console.log('Refresher ready🥤🥤🥤. Press NUMPAD 5 to refresh CSS files');
+
+	function refreshCSS() {
 		const links = document.getElementsByTagName('link');
-		console.log('Refreshing CSS');
-		for (let i = 0, n = links.length; i < n; i++) {
-			if (links[i].href.toLowerCase().indexOf('cdn') === -1)
-				links[i].href += "?";
+
+		console.log('Refreshing CSS...');
+		for (let i = 0, len = links.length; i < len; i++) {
+			let link = links[i];
+
+			if (link.href.toLowerCase().indexOf('http') === -1)
+				link.href += '?';	//Forget scripts out of your control
                 }
-		console.log('CSS page refreshed.');
+		console.log('CSS page refreshed🥤🥤.');
                 return;
         };
 	
 	window.addEventListener('keyup', function(e) {
-		if (e.keyCode === 101 || e.keyCode === 53) {    //Numpad 5
-			reloadCSS();
+		if (e.keyCode === 101 || e.keyCode === 53) {
+			refreshCSS();
 		}
 		return;
 	});
 }
-document.addEventListener("DOMContentLoaded", script);
+document.addEventListener('DOMContentLoaded', script);
